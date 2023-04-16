@@ -1,6 +1,7 @@
 package top.dc.handle;
 
 import org.apache.commons.io.FileUtils;
+import org.tinylog.Logger;
 import top.dc.Config;
 
 import java.io.File;
@@ -27,14 +28,14 @@ public class NeoVimConfigHandleImpl implements ConfigHandle {
                 }
             }
             if("".equals(nvimPath)){
-                System.out.println("未找到监听的neovim目录");
+                Logger.info("未找到监听的neovim目录");
                 return;
             }
 
             FileUtils.copyDirectory(new File(nvimPath), new File(bakDir + File.separator + "nvim"));
-            System.out.println("neovim 配置备份完成");
+            Logger.info("neovim 配置备份完成");
         } catch (Exception e) {
-            System.out.println("neovim 配置备份失败: " + e.getMessage());
+            Logger.info("neovim 配置备份失败: " + e.getMessage());
         }
     }
 

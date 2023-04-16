@@ -1,6 +1,7 @@
 package top.dc.handle;
 
 import org.apache.commons.io.FileUtils;
+import org.tinylog.Logger;
 import top.dc.Config;
 
 import java.io.File;
@@ -20,9 +21,9 @@ public class IdeaVimConfigHandleImpl implements ConfigHandle {
             Config config = Config.getInstance();
             String bakDir = config.getConfigBakPath();
             FileUtils.copyFile(new File(path), new File(bakDir + File.separator + "ideavimrc_bak"));
-            System.out.println("ideavimrc 备份完成");
+            Logger.info("ideavimrc 备份完成");
         } catch (Exception e) {
-            System.out.println("ideavimrc 备份失败: " + e.getMessage());
+            Logger.info("ideavimrc 备份失败: " + e.getMessage());
         }
     }
 

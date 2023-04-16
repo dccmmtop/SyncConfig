@@ -2,6 +2,7 @@ package top.dc;
 
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.apache.commons.io.monitor.FileAlterationObserver;
+import org.tinylog.Logger;
 
 import java.io.File;
 
@@ -19,60 +20,60 @@ public class FileListener extends FileAlterationListenerAdaptor {
     @Override
     public void onStart(FileAlterationObserver observer) {
         super.onStart(observer);
-//        System.out.println("onStart");
+//        Logger.info("onStart");
     }
 
     @Override
     public void onDirectoryCreate(File directory) {
-        System.out.println("新建：" + directory.getAbsolutePath());
+        Logger.info("新建：" + directory.getAbsolutePath());
         deal(directory.getAbsolutePath());
     }
 
     @Override
     public void onDirectoryChange(File directory) {
-        System.out.println("修改：" + directory.getAbsolutePath());
+        Logger.info("修改：" + directory.getAbsolutePath());
         deal(directory.getAbsolutePath());
     }
 
     @Override
     public void onDirectoryDelete(File directory) {
-        System.out.println("删除：" + directory.getAbsolutePath());
+        Logger.info("删除：" + directory.getAbsolutePath());
         deal(directory.getAbsolutePath());
     }
 
     @Override
     public void onFileCreate(File file) {
 //        String compressedPath = file.getAbsolutePath();
-//        System.out.println("新建：" + compressedPath);
+//        Logger.info("新建：" + compressedPath);
 //        if (file.canRead()) {
 //            // TODO 读取或重新加载文件内容
-//            System.out.println("文件变更，进行处理");
+//            Logger.info("文件变更，进行处理");
 //        }
     }
 
     @Override
     public void onFileChange(File file) {
         String compressedPath = file.getAbsolutePath();
-        System.out.println("修改：" + compressedPath);
+        Logger.info("修改：" + compressedPath);
         deal(file.getAbsolutePath());
     }
 
     @Override
     public void onFileDelete(File file) {
-        System.out.println("删除：" + file.getAbsolutePath());
+        Logger.info("删除：" + file.getAbsolutePath());
     }
 
     @Override
     public void onStop(FileAlterationObserver observer) {
         super.onStop(observer);
-//        System.out.println("onStop");
+//        Logger.info("onStop");
     }
 
     private void deal(String path) {
         try {
             config.find(path).deal(path);
         } catch (NotFoundConfigHandle e) {
-            System.out.println(e.getMessage());
+            Logger.info(e.getMessage());
         }
     }
 }

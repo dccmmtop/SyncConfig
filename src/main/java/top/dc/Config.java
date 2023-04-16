@@ -2,6 +2,7 @@ package top.dc;
 
 import lombok.Data;
 import org.apache.commons.io.FileUtils;
+import org.tinylog.Logger;
 import org.yaml.snakeyaml.Yaml;
 import top.dc.handle.ConfigHandle;
 
@@ -43,24 +44,24 @@ public class Config {
             home = System.getenv("USERPROFILE");
         }
         if(null == home || home.isEmpty()){
-            System.out.println("未找到系统变量 HOME 或者 USERPROFILE");
+            Logger.info("未找到系统变量 HOME 或者 USERPROFILE");
             throw new NotFoundEnvArg();
         }
         String yamlPath = String.join(File.separator,home,".config","syncConfig.yaml");
         InputStream inputStream = Files.newInputStream(Paths.get(yamlPath));
         config = yaml.loadAs(inputStream, Config.class);
         String jarPath = Config.class.getResource("").getPath();
-        System.out.println("jarPath: " + jarPath);
+        Logger.info("jarPath: " + jarPath);
         // 加载 handle 包下的所有类
         List<Class<?>> classList = new ArrayList<>();
         String scanPackageName = "top.dc.handle";
         if(jarPath.contains(".jar")){
             // 从 jar 中扫描
-            System.out.println("从jar包中扫描");
+            Logger.info("从jar包中扫描");
             classList =  getClassListFromJarFile(scanPackageName);
         }else{
             // 从目录中扫描
-            System.out.println("从目录中扫描");
+            Logger.info("从目录中扫描");
             classList = getClassListFromDir(scanPackageName);
         }
 
@@ -97,13 +98,13 @@ public class Config {
         for (File file : Objects.requireNonNull(classFile.listFiles())) {
             try {
                 Class<?> klass = Class.forName(packagePath + "." + file.getName().replace(".class","") );
-                System.out.println("加载配置处理器: " + klass.getName());
+                Logger.info("加载配置处理器: " + klass.getName());
                 if(klass.isInterface()){
                     continue;
                 }
                 klassList.add(klass);
             } catch (ClassNotFoundException e) {
-                System.out.println("加载类失败: "+ e.getMessage());
+                Logger.info("加载类失败: "+ e.getMessage());
             }
         }
         return klassList;
@@ -124,7 +125,7 @@ public class Config {
         try {
             jarFile = new JarFile(jarPath);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            Logger.info(e.getMessage());
         }
 
         List<JarEntry> jarEntryList = new ArrayList<JarEntry>();
@@ -145,14 +146,14 @@ public class Config {
             // InputStream in = jarFile.getInputStream(entry);
             try {
 
-                System.out.println("加载配置处理器: " + className);
+                Logger.info("加载配置处理器: " + className);
                 Class<?> klass = Thread.currentThread().getContextClassLoader().loadClass(className);
                 if(klass.isInterface()){
                     continue;
                 }
                 klassList.add(klass);
             } catch (ClassNotFoundException e) {
-                System.out.println("加载类失败: " + e.getMessage());
+                Logger.info("加载类失败: " + e.getMessage());
             }
         }
 
