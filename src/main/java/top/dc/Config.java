@@ -23,7 +23,8 @@ import java.util.jar.JarFile;
  */
 @Data
 public class Config {
-    private List<String> abFilePathList;
+    private List<String> abFilePathList = new ArrayList<>();
+    private List<Backup> backupList;
     private List<ConfigHandle> configHandleList = new ArrayList<>();
     private String configBakPath;
     private boolean loaded;
@@ -50,6 +51,11 @@ public class Config {
         String yamlPath = String.join(File.separator,home,".config","syncConfig.yaml");
         InputStream inputStream = Files.newInputStream(Paths.get(yamlPath));
         config = yaml.loadAs(inputStream, Config.class);
+        for (Backup backup : config.getBackupList()) {
+            config.getAbFilePathList().add(backup.getFrom());
+            backup.setTo(config.getConfigBakPath() + File.separator + backup.getTo());
+        }
+
         String jarPath = Config.class.getResource("").getPath();
         Logger.info("jarPath: " + jarPath);
         // 加载 handle 包下的所有类
