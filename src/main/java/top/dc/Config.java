@@ -177,7 +177,7 @@ public class Config {
                         Thread.sleep(5000);
                         if(changeFlag.compareAndSet(1,0)){
                             Logger.info("开始云备份");
-                            String cmd = "cmd /c dir  C:\\Users\\dccmm\\code\\syncConfig"  + " && git add . && git commit -m \"update\" && git push";
+                            String cmd = "cmd /c dir "+  configBakPath  + " && git add . && git commit -m \"update\" && git push";
                             Logger.debug(cmd);
                             Runtime.getRuntime().exec(cmd);
                         }else{
