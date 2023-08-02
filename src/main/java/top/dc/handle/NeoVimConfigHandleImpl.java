@@ -36,6 +36,7 @@ public class NeoVimConfigHandleImpl implements ConfigHandle {
 
             FileUtils.copyDirectory(new File(backup.getFrom()), new File(backup.getTo()));
             Logger.info("neovim 配置备份完成");
+            config.changeFlag.compareAndSet(0,1);
         } catch (Exception e) {
             Logger.info("neovim 配置备份失败: {}", e);
         }

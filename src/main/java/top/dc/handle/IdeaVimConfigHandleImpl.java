@@ -35,6 +35,7 @@ public class IdeaVimConfigHandleImpl implements ConfigHandle {
 
             FileUtils.copyFile(new File(path), new File(backup.getTo()));
             Logger.info("ideavimrc 备份完成");
+            Config.getInstance().changeFlag.compareAndSet(0,1);
         } catch (Exception e) {
             Logger.info("ideavimrc 备份失败: " + e.getMessage());
         }

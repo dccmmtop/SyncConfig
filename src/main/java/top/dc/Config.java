@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -29,6 +30,7 @@ public class Config {
     private String configBakPath;
     private boolean loaded;
     private static Config config = new Config();
+    public AtomicInteger changeFlag = new AtomicInteger(0);
     private Config(){}
 
     public static Config getInstance() throws NotFoundEnvArg, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -164,5 +166,31 @@ public class Config {
         }
 
         return klassList;
+    }
+
+    public void scheduledCloudBackup() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        Thread.sleep(5000);
+                        if(changeFlag.compareAndSet(1,0)){
+                            Logger.info("开始云备份");
+                            String cmd = "cmd /c dir  C:\\Users\\dccmm\\code\\syncConfig"  + " && git add . && git commit -m \"update\" && git push";
+                            Logger.debug(cmd);
+                            Runtime.getRuntime().exec(cmd);
+                        }else{
+                            Logger.debug("没有改动，不进行云备份");
+                        }
+                    } catch (InterruptedException e) {
+                        Logger.error("休眠异常");
+                    } catch (IOException e) {
+                        Logger.error("云备份异常 {}",e);
+                    }
+                }
+            }
+        }).start();
+
     }
 }

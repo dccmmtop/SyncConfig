@@ -35,6 +35,7 @@ public class LsdConfigHandleImpl implements ConfigHandle {
             }
             FileUtils.copyFileToDirectory(new File(path), new File(backup.getTo()));
             Logger.info("lsd config.yaml 备份完成");
+            Config.getInstance().changeFlag.compareAndSet(0,1);
         } catch (Exception e) {
             Logger.info("lsd config.yaml 备份失败: " + e.getMessage());
         }

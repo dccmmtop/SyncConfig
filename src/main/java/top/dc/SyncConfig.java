@@ -10,6 +10,7 @@ public class SyncConfig {
     public static void main(String[] args) throws Exception, NotFoundEnvArg {
         Logger.info("启动...");
         Config  config = Config.loadConfig();
+        config.scheduledCloudBackup();
         FileMonitor fileMonitor = new FileMonitor(1000);
         for (String filePath : config.getAbFilePathList()) {
             fileMonitor.monitor(filePath, new FileListener(config));

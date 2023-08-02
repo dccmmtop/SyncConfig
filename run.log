@@ -1,0 +1,28 @@
+2023-04-21 17:29:25 top.dc.SyncConfig.main:11 INFO: 启动...
+2023-04-21 17:29:25 top.dc.Config.loadConfig:60 INFO: jarPath: /C:/Users/dccmm/code/java/SyncConfig/target/classes/top/dc/
+2023-04-21 17:29:25 top.dc.Config.loadConfig:70 INFO: 从目录中扫描
+2023-04-21 17:29:25 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.ConfigHandle
+2023-04-21 17:29:25 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.IdeaVimConfigHandleImpl
+2023-04-21 17:29:25 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.LsdConfigHandleImpl
+2023-04-21 17:29:25 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.NeoVimConfigHandleImpl
+2023-04-21 17:32:49 top.dc.SyncConfig.main:11 INFO: 启动...
+2023-04-21 17:32:49 top.dc.Config.loadConfig:60 INFO: jarPath: /C:/Users/dccmm/code/java/SyncConfig/target/classes/top/dc/
+2023-04-21 17:32:49 top.dc.Config.loadConfig:70 INFO: 从目录中扫描
+2023-04-21 17:32:49 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.ConfigHandle
+2023-04-21 17:32:49 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.IdeaVimConfigHandleImpl
+2023-04-21 17:32:49 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.LsdConfigHandleImpl
+2023-04-21 17:32:49 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.NeoVimConfigHandleImpl
+2023-04-21 17:35:11 top.dc.SyncConfig.main:11 INFO: 启动...
+2023-04-21 17:35:12 top.dc.Config.loadConfig:60 INFO: jarPath: /C:/Users/dccmm/code/java/SyncConfig/target/classes/top/dc/
+2023-04-21 17:35:12 top.dc.Config.loadConfig:70 INFO: 从目录中扫描
+2023-04-21 17:35:12 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.ConfigHandle
+2023-04-21 17:35:12 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.IdeaVimConfigHandleImpl
+2023-04-21 17:35:12 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.LsdConfigHandleImpl
+2023-04-21 17:35:12 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.NeoVimConfigHandleImpl
+2023-04-21 17:40:47 top.dc.SyncConfig.main:11 INFO: 启动...
+2023-04-21 17:40:47 top.dc.Config.loadConfig:60 INFO: jarPath: /C:/Users/dccmm/code/java/SyncConfig/target/classes/top/dc/
+2023-04-21 17:40:47 top.dc.Config.loadConfig:70 INFO: 从目录中扫描
+2023-04-21 17:40:47 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.ConfigHandle
+2023-04-21 17:40:47 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.IdeaVimConfigHandleImpl
+2023-04-21 17:40:47 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.LsdConfigHandleImpl
+2023-04-21 17:40:47 top.dc.Config.getClassListFromDir:107 INFO: 加载配置处理器: top.dc.handle.NeoVimConfigHandleImpl
